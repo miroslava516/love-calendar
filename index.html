@@ -51,7 +51,8 @@ footer{text-align:center;margin-top:30px;color:#a9c8f4;font-size:14px}.hidden{di
     <div class="password-error" id="passwordError" aria-live="polite"></div>
   </div>
 </section>
-<main class="wrap">
+<main class="wrap hidden"
+id="siteContent">
 <header><div class="eyebrow">a little something, just for you</div><h1>31 день — 31 мгновение твоего хорошего настроения <span style="color:#78adff">♡</span></h1><div class="rule"></div><p class="subtitle">Каждый день — твое хорошее настроение и частичка моей любви. Всё это — только для тебя.</p></header>
 <section id="calendar"><p class="note">Выбирай окошко, которое я тебе сегодня прислала ♡</p><div class="grid" id="grid">
 <button class="door" type="button" data-day="1" aria-label="Открыть окошко 01">
@@ -159,7 +160,7 @@ passwordForm.addEventListener('submit', (event) => {
   if (entered === ACCESS_PASSWORD) {
     document.getElementById('passwordScreen').classList.add('hidden');
     document.getElementById('siteContent').classList.remove('hidden');
-    const match = location.hash.match(/day=(\\d+)/);
+    const match = location.hash.match(/day=(\d+)/);
     if (match) openDay(Number(match[1]));
   } else {
     document.getElementById('passwordError').textContent = 'Не тот пароль. Попробуй ещё раз ♡';
