@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101a2b">
+<title>31 день — 31 признание ♡</title>
+<style>
+:root{--navy:#14233b;--navy-dark:#080f1c;--blue:#6fa8ff;--blue-light:#b9d5ff;--white:#f5f8ff;--ink:#dce8fa}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:Georgia,"Times New Roman",serif;background:radial-gradient(circle at 15% 10%,#263d60 0,transparent 30%),radial-gradient(circle at 85% 80%,#172e50 0,transparent 34%),linear-gradient(145deg,#070b12,#101a2b 52%,#080e19)}
+.wrap{width:min(1000px,92vw);margin:auto;padding:42px 0 56px}
+header{text-align:center;margin-bottom:28px}.eyebrow{font:600 11px Arial,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#91baff}
+h1{font-size:clamp(36px,7vw,64px);font-weight:400;line-height:1.02;margin:12px 0;color:#f5f8ff}
+.subtitle{font-size:17px;color:#c2d6f4;max-width:540px;margin:auto;line-height:1.55}.rule{width:90px;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent);margin:22px auto}
+.note{text-align:center;font:13px Arial,sans-serif;color:#a9c8f4;margin:0 0 24px}
+.grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:12px}
+.door{min-height:105px;border:1px solid #45658f;border-radius:15px;background:linear-gradient(145deg,#f7faff,#dceaff);box-shadow:0 7px 22px #0006;color:#142b4a;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;transition:transform .2s,box-shadow .2s,border-color .2s;font-family:inherit}
+.door:hover{transform:translateY(-4px);box-shadow:0 12px 28px #4b8fe955;border-color:#9bc5ff}.num{font-size:27px;line-height:1}.gift{font-size:20px;color:#3979ca}.tiny{font:10px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#5479a8}
+.panel{max-width:650px;margin:auto;background:linear-gradient(145deg,#182943f2,#0d1728f5);border:1px solid #45658f;border-radius:24px;padding:clamp(24px,5vw,46px);box-shadow:0 18px 50px #0008;text-align:center}
+.panel h2{font-size:clamp(29px,5vw,42px);font-weight:400;color:#f5f8ff;margin:10px 0}.panel p{font-size:19px;line-height:1.65;margin:14px 0 24px;color:#dce8fa}
+button.action{border:1px solid #7eaff0;border-radius:999px;padding:13px 20px;background:#315f9e;color:#fff;font:600 13px Arial,sans-serif;cursor:pointer;margin:5px;transition:background .2s}
+button.action:hover{background:#467fc4}
+.linkbox{margin:18px auto 0;padding:10px 12px;border:1px dashed #6f98ca;border-radius:12px;font:12px Arial,sans-serif;color:#b9d5ff;overflow-wrap:anywhere}
+footer{text-align:center;margin-top:30px;color:#a9c8f4;font-size:14px}.hidden{display:none!important}
+@media(max-width:760px){.grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.door{min-height:92px}}
+@media(max-width:420px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.door{min-height:86px}}
+
+.password-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.password-card{width:min(460px,100%);text-align:center;padding:clamp(28px,6vw,48px);border:1px solid #45658f;border-radius:24px;background:linear-gradient(145deg,#182943f2,#0d1728f5);box-shadow:0 18px 50px #0008}
+.password-heart{font-size:48px;color:#78adff;margin-bottom:10px}
+.password-card h1{font-size:clamp(30px,7vw,42px);margin:8px 0 12px}
+.password-card p{color:#c2d6f4;line-height:1.6;margin:0 0 22px}
+.password-card input{width:100%;padding:14px 16px;border:1px solid #6f98ca;border-radius:12px;background:#f5f8ff;color:#142b4a;font-size:16px;text-align:center;outline:none}
+.password-card input:focus{border-color:#9bc5ff;box-shadow:0 0 0 3px #6fa8ff33}
+.password-card button{width:100%;margin:14px 0 0}
+.password-error{min-height:22px;margin-top:12px;color:#ffb8c4;font:13px Arial,sans-serif}
+</style>
+</head>
+<body>
+  <section class="password-screen" id="passwordScreen">
+  <div class="password-card">
+    <div class="password-heart">♡</div>
+    <div class="eyebrow">a little something, just for you</div>
+    <h1>Адвент-календарь</h1>
+    <p>У меня для тебя кое-что особенное. Введи пароль, чтобы открыть сюрприз ♡</p>
+    <form id="passwordForm">
+      <input id="passwordInput" type="password" placeholder="Введи пароль" autocomplete="off" aria-label="Пароль">
+      <button class="action" type="submit">Открыть мой сюрприз ♡</button>
+    </form>
+    <div class="password-error" id="passwordError" aria-live="polite"></div>
+  </div>
+</section>
+<main class="wrap">
+<header><div class="eyebrow">a little something, just for you</div><h1>31 день — 31 мгновение твоего хорошего настроения <span style="color:#78adff">♡</span></h1><div class="rule"></div><p class="subtitle">Каждый день — твое хорошее настроение и частичка моей любви. Всё это — только для тебя.</p></header>
+<section id="calendar"><p class="note">Выбирай окошко, которое я тебе сегодня прислала ♡</p><div class="grid" id="grid">
+<button class="door" type="button" data-day="1" aria-label="Открыть окошко 01">
+      <span class="num">01</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="2" aria-label="Открыть окошко 02">
+      <span class="num">02</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="3" aria-label="Открыть окошко 03">
+      <span class="num">03</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="4" aria-label="Открыть окошко 04">
+      <span class="num">04</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="5" aria-label="Открыть окошко 05">
+      <span class="num">05</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="6" aria-label="Открыть окошко 06">
+      <span class="num">06</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="7" aria-label="Открыть окошко 07">
+      <span class="num">07</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="8" aria-label="Открыть окошко 08">
+      <span class="num">08</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="9" aria-label="Открыть окошко 09">
+      <span class="num">09</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="10" aria-label="Открыть окошко 10">
+      <span class="num">10</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="11" aria-label="Открыть окошко 11">
+      <span class="num">11</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="12" aria-label="Открыть окошко 12">
+      <span class="num">12</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="13" aria-label="Открыть окошко 13">
+      <span class="num">13</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="14" aria-label="Открыть окошко 14">
+      <span class="num">14</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="15" aria-label="Открыть окошко 15">
+      <span class="num">15</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="16" aria-label="Открыть окошко 16">
+      <span class="num">16</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="17" aria-label="Открыть окошко 17">
+      <span class="num">17</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="18" aria-label="Открыть окошко 18">
+      <span class="num">18</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="19" aria-label="Открыть окошко 19">
+      <span class="num">19</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="20" aria-label="Открыть окошко 20">
+      <span class="num">20</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="21" aria-label="Открыть окошко 21">
+      <span class="num">21</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="22" aria-label="Открыть окошко 22">
+      <span class="num">22</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="23" aria-label="Открыть окошко 23">
+      <span class="num">23</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="24" aria-label="Открыть окошко 24">
+      <span class="num">24</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="25" aria-label="Открыть окошко 25">
+      <span class="num">25</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="26" aria-label="Открыть окошко 26">
+      <span class="num">26</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="27" aria-label="Открыть окошко 27">
+      <span class="num">27</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="28" aria-label="Открыть окошко 28">
+      <span class="num">28</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="29" aria-label="Открыть окошко 29">
+      <span class="num">29</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="30" aria-label="Открыть окошко 30">
+      <span class="num">30</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+<button class="door" type="button" data-day="31" aria-label="Открыть окошко 31">
+      <span class="num">31</span><span class="gift">♡</span><span class="tiny">open me</span>
+    </button>
+</div><footer>С любовью, для тебя ♡</footer></section>
+<section id="surprise" class="hidden"><article class="panel"><div class="eyebrow" id="dayLabel">a little surprise</div><div style="font-size:36px;color:#78adff;margin-top:12px">♡</div><h2 id="title"></h2><p id="message"></p><button class="action" id="back">← К календарю</button><div class="linkbox" id="url"></div><button class="action" id="copy">Скопировать ссылку на это окошко</button></article></section>
+</main>
+<script>
+const ACCESS_PASSWORD = 'толькодлятебя';
+const passwordForm = document.getElementById('passwordForm');
+passwordForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const entered = document.getElementById('passwordInput').value;
+  if (entered === ACCESS_PASSWORD) {
+    document.getElementById('passwordScreen').classList.add('hidden');
+    document.getElementById('siteContent').classList.remove('hidden');
+    const match = location.hash.match(/day=(\\d+)/);
+    if (match) openDay(Number(match[1]));
+  } else {
+    document.getElementById('passwordError').textContent = 'Не тот пароль. Попробуй ещё раз ♡';
+    document.getElementById('passwordInput').select();
+  }
+});
+const coupons = [
+ [
+    "2X Купон",
+    "Все билеты, которые заработал умножаются на 2 ♡"
+],
+  [
+    "Я сегодня твой личный джинн",
+    "Одно желание - постараюсь исполнить. Даже если оно странное"
+],
+  [
+    "Пульт управления мной",
+    "Ты выбираешь: мой макияж, прическу и образ для следующей встречи"
+],
+  [
+    "Купон без названия",
+    "Ты активируешь его когда хочешь, а я сама решаю, чем тебя удивить"
+],
+  [
+    "Купон на массаж",
+    "Полный массаж всего тела продолжительностью в 1 час (масло с меня)"
+],
+  [
+    "Официально вредина",
+    "Можешь подкалывать как хочешь в течении суток"
+],
+  [
+    "Два факта - одна ложь",
+    "Будет 3 истории из моей жизни, угадаешь какая из них ложная, с тебя любое желание, а если нет, то я тебя кусаю"
+],
+  [
+    "Укради один мой секрет",
+    "Ты выбираешь тему, а я рассказываю свою нелепую ситуацию на эту тему"
+],
+  [
+    "Проверка насколько ты меня знаешь",
+    "Я описываю различные ситуации из жизни, а ты думаешь как бы я поступила"
+],
+  [
+    "Купон-бумеранг",
+    "Любой купон, который ты использовал можешь использовать еще один раз."
+],
+  [
+    "День ухода",
+    "Вечерний СПА. Масочки, крем, массаж и ванна. Балдеж, не так ли?"
+],
+  [
+    "Вечер игр",
+    "Играем в правду или действие, но не простую"
+],
+  [
+    "Купон на заботу",
+    "Сегодня я возьму на себя всю бытовуху (помыть посуду, приготовить ужин и позаботиться о тебе)."
+],
+  [
+    "Ох уж эта учеба",
+    "Предъяви этот купон и я сделаю любое задание за тебя."
+],
+  [
+    "Почувствуем себя умниками",
+    "Игра в шахматы или прохождение интересных тестов."
+],
+  [
+    "Любимая вкусняшка",
+    "Выбирай сладость — сегодня она за мой счёт."
+],
+  [
+    "День без слова нет",
+    "Я неприкословно все выполняю"
+],
+  [
+    "Не рассмейся",
+    "Смотрим смешные видосы с водой во рту, посомтрим кто дольше продержиться с каменным личцом"
+],
+  [
+    " Тест на ментальную связь",
+    "Сам понял что"
+],
+  [
+    "Кто из нас скорее...?",
+    "Тоже тестик, но зато поржать можно"
+],
+  [
+    "Подарок №1",
+    "Для комфортного просмотра"
+],
+  [
+    "Подарок №2",
+    "Для ежедневного расслабления"
+],
+  [
+    "Подарок №3",
+    "Для тепла"
+],
+  [
+    "Подарок №4",
+    "Чтобы больше пальчиками не ковырялся хаххахаххаха"
+],
+  [
+    "Подарок №5",
+    "Пожалей бутылки("
+],
+  [
+    "Подарок №6",
+    "Самое ценнок всегда рядом (денюжки)"
+],
+  [
+    "Подарок №7",
+    "Для всех гаджетов"
+],
+  [
+    "Подарок №8",
+    "Чтобы не скучать"
+],
+  [
+    "Подарок №9",
+    "Чтобы всегда был красивым и спортивным"
+],
+  [
+    "Подарок №10",
+    "Для комфортного сна"
+],
+  [
+    "Подарок №11",
+    "Денег больше нет, поэтому главный подарок - Я:)  Люблю тебя!"
+],
+];
+const grid=document.getElementById('grid'), calendar=document.getElementById('calendar'), surprise=document.getElementById('surprise');
+let currentDay=1;
+function render(){
+  grid.querySelectorAll('[data-day]').forEach(button=>{
+    button.addEventListener('click',()=>openDay(Number(button.dataset.day)));
+  });
+}
+function openDay(n){
+  if(!Number.isInteger(n)||n<1||n>coupons.length)return;
+  currentDay=n;
+  document.getElementById('dayLabel').textContent=`a little surprise · ${String(n).padStart(2,'0')}`;
+  document.getElementById('title').textContent=coupons[n-1][0];
+  document.getElementById('message').textContent=coupons[n-1][1];
+  const link=location.href.split('#')[0]+`#day=${n}`;
+  document.getElementById('url').textContent=link;
+  calendar.classList.add('hidden');surprise.classList.remove('hidden');
+  history.replaceState(null,'',`#day=${n}`);window.scrollTo({top:0,behavior:'smooth'});
+}
+function showCalendar(){surprise.classList.add('hidden');calendar.classList.remove('hidden');history.replaceState(null,'',location.pathname+location.search)}
+document.getElementById('back').addEventListener('click',showCalendar);
+document.getElementById('copy').addEventListener('click',async()=>{
+ const link=location.href.split('#')[0]+`#day=${currentDay}`;
+ try{await navigator.clipboard.writeText(link);document.getElementById('copy').textContent='Ссылка скопирована ♡'}
+ catch(e){document.getElementById('url').textContent=link+' — скопируй вручную'}
+});
+render();
+const match=location.hash.match(/day=(\d+)/);if(match)openDay(Number(match[1]));
+</script>
+</body>
+</html>
